@@ -16,6 +16,6 @@ class PassportController(
         @RequestParam("roles", required = false) roles: List<String>?,
         @RequestParam("lifetime", required = false) lifetime: Long?,
     ): JwtResponse {
-        return passportService.generateToken(userId, userGroups, roles, lifetime
+        return passportService.generateToken(userId, userGroups, roles, lifetime)
     }
 }
