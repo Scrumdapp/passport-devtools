@@ -37,12 +37,10 @@ class PassportService(
             lifeTime ?: (60 * 5)
         )
 
-        val dateTimeFormatter = DateTimeFormatter
-            .ofPattern("yyyy-MM-dd HH:mm")
-
+        val bearerToken = "Bearer $token"
         val expiry = formatExpiryTime(lifeTime ?: (60 * 5))
 
-        return JwtResponse(token, passport.toJwtClaim(), expiry)
+        return JwtResponse(bearerToken, passport.toJwtClaim(), expiry)
     }
 
     private fun formatExpiryTime(lifeTime: Long): String {
