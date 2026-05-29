@@ -31,8 +31,11 @@ class PassportService(
             roles ?: listOf("STUDENT")
         )
 
+        val subject = if (userId != null) {
+            "$userId" } else { "1" }
+
         val token = jwtService.generateToken(
-            userId.toString(),
+            subject,
             passport.toJwtClaim(),
             lifeTime ?: (60 * 5)
         )
